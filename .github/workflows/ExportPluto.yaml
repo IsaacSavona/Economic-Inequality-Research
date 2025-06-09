@@ -56,9 +56,6 @@ jobs:
               Export_baked_notebookfile=false,
               Export_baked_state=false,
             )'
-            
-      - name: Build Jekyll site
-          run: bundle exec jekyll build -d build
 
       - name: Create index.md for Jekyll layout
         run: |
