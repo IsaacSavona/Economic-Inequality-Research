@@ -71,6 +71,11 @@ jobs:
           done
           echo '</ul>' >> index.md
 
+      - name: Remove .nojekyll if it exists
+        run: |
+          rm -f .nojekyll
+
+
       - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@releases/v4
         with:
