@@ -16,6 +16,20 @@ permissions:
     contents: write
     # (all other permission fields default to "none")
 
+- name: Create index.md for Jekyll layout
+  run: |
+    echo '---' > index.md
+    echo 'layout: home' >> index.md
+    echo 'title: Economic Inequality Research' >> index.md
+    echo '---' >> index.md
+    echo 'Welcome to my collection of Pluto.jl notebooks on inequality.<br>' >> index.md
+    echo 'Click any of the notebooks below to explore:<ul>' >> index.md
+    find src -name '*.html' | while read f; do
+      fname=$(basename "$f")
+      echo "<li><a href=\"$f\">$fname</a></li>" >> index.md
+    done
+    echo '</ul>' >> index.md
+
 jobs:
     build-and-deploy:
         runs-on: ubuntu-latest
