@@ -57,12 +57,12 @@ jobs:
               Export_baked_state=false,
             )'
 
-        - name: Set up Ruby
+      - name: Set up Ruby
           uses: ruby/setup-ruby@v1
           with:
             ruby-version: '3.1'
 
-        - name: Install Jekyll and Bundler
+      - name: Install Jekyll and Bundler
           run: |
             gem install bundler
             bundle init
@@ -71,7 +71,7 @@ jobs:
             echo 'gem "jekyll-feed", "~> 0.17"' >> Gemfile
             bundle install
 
-        - name: Build Jekyll site
+      - name: Build Jekyll site
           run: bundle exec jekyll build -d build
 
       - name: Create index.md for Jekyll layout
